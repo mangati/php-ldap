@@ -16,7 +16,7 @@ class LdifSerializer implements SerializerInterface
     /**
      * {@inheritdoc}
      */
-    public function serialize($data, $format, array $context = [])
+    public function serialize($data, array $context = [])
     {
         if (!($data instanceof Entry)) {
             throw new Exception('The serialized data must be a ldap entry.');
@@ -45,7 +45,7 @@ class LdifSerializer implements SerializerInterface
     /**
      * {@inheritdoc}
      */
-    public function deserialize($data, $type, $format, array $context = [])
+    public function deserialize($data, $type, array $context = [])
     {
         throw new Exception('Not implemented');
     }
