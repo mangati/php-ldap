@@ -13,8 +13,10 @@ use Mangati\Serializer\SerializerInterface;
  */
 class LdifSerializer implements SerializerInterface
 {
-    
-    public function serialize($data)
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize($data, $format, array $context = [])
     {
         if (!($data instanceof Entry)) {
             throw new Exception('The serialized data must be a ldap entry.');
@@ -40,7 +42,10 @@ class LdifSerializer implements SerializerInterface
         return "dn: {$entry->dn()}\n" .  join("\n", $lines);
     }
 
-    public function unserialize($data)
+    /**
+     * {@inheritdoc}
+     */
+    public function deserialize($data, $type, $format, array $context = [])
     {
         throw new Exception('Not implemented');
     }
