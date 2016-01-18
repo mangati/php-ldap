@@ -48,6 +48,11 @@ class Manager
     private $bind;
     
     /**
+     * @var bool
+     */
+    private $connected;
+    
+    /**
      * 
      * @param string $host
      * @param int    $port
@@ -60,6 +65,7 @@ class Manager
         $this->port = $port;
         $this->user = $user;
         $this->pass = $pass;
+        $this->connected = false;
     }
     
     /**
@@ -68,6 +74,10 @@ class Manager
      */
     public function connect()
     {
+        if (!extension_loaded('ldap')) {
+            throw new LdapException('The ldap module is needed.');
+        }
+        
         $this->conn = @ldap_connect($this->host, $this->port);
         if ($this->conn === false) {
             $this->throwException();
@@ -79,6 +89,15 @@ class Manager
         $this->bind = @ldap_bind($this->conn, $this->user, $this->pass);
         if ($this->bind === false) {
             $this->throwException();
+        }
+        
+        $this->connected = true;
+    }
+    
+    private function checkConnection()
+    {
+        if (!$this->connected) {
+            throw new LdapException('Not connected to server.');
         }
     }
     
@@ -92,6 +111,8 @@ class Manager
      */
     public function search($baseDn, $filter, array $attributes = [])
     {
+        $this->checkConnection();
+        
         $search = @ldap_search($this->conn, $baseDn, $filter, $attributes);
         if ($search === false) {
             $this->throwException();
@@ -114,6 +135,8 @@ class Manager
      */
     public function add(Entry $entry)
     {
+        $this->checkConnection();
+        
         $attrs = $this->convertToArray($entry);
         $rs = @ldap_add($this->conn, $entry->dn(), $attrs);
         if ($rs === false) {
@@ -128,6 +151,8 @@ class Manager
      */
     public function modify(Entry $entry)
     {
+        $this->checkConnection();
+        
         $attrs = $this->convertToArray($entry);
         $rs = @ldap_modify($this->conn, $entry->dn(), $attrs);
         if ($rs === false) {
@@ -143,6 +168,8 @@ class Manager
      */
     public function rename($dn, $newDn)
     {
+        $this->checkConnection();
+        
         $newrdn = substr($newDn, 0, strpos($newDn, ','));
         $newparent = substr($newDn, strpos($newDn, ',') + 1);
         
@@ -159,6 +186,8 @@ class Manager
      */
     public function delete($dn)
     {
+        $this->checkConnection();
+        
         $rs = @ldap_delete($this->conn, $dn);
         if ($rs === false) {
             $this->throwException();
@@ -167,6 +196,8 @@ class Manager
     
     public function close()
     {
+        $this->checkConnection();
+        
         @ldap_close($this->conn);
     }
     
