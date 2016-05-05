@@ -54,17 +54,23 @@ class Manager
     
     /**
      * 
+     */
+    private $startTls;
+    
+    /**
+     * 
      * @param string $host
      * @param int    $port
      * @param string $user
      * @param string $pass
      */
-    public function __construct($host, $port, $user = null, $pass = null)
+    public function __construct($host, $port, $user = null, $pass = null, $startTls = false)
     {
         $this->host = $host;
         $this->port = $port;
         $this->user = $user;
         $this->pass = $pass;
+        $this->startTls = $startTls;
         $this->connected = false;
     }
     
@@ -85,6 +91,10 @@ class Manager
         
         ldap_set_option($this->conn, LDAP_OPT_REFERRALS, 0);
         ldap_set_option($this->conn, LDAP_OPT_PROTOCOL_VERSION, 3);
+        
+        if ($this->startTls && !@ldap_start_tls($this->conn)) {
+            $this->throwException();
+        }
         
         $this->bind = @ldap_bind($this->conn, $this->user, $this->pass);
         if ($this->bind === false) {
