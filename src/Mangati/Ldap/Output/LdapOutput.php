@@ -18,9 +18,9 @@ class LdapOutput implements OutputInterface
     
     private $manager;
     
-    public function __construct($host, $port, $user = null, $pass = null)
+    public function __construct($host, $port, $user = null, $pass = null, $startTls = false)
     {
-        $this->manager = new Manager($host, $port, $user, $pass);
+        $this->manager = new Manager($host, $port, $user, $pass, $startTls);
     }
     
     public function open()
