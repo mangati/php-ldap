@@ -44,7 +44,7 @@ class AttributeCollection implements Iterator
     public function getAll($name) 
     {
         foreach ($this->collection as $attr) {
-            if ($attr->getName() === $name) {
+            if (strcasecmp($attr->getName(), $name) === 0) {
                 yield $attr;
             }
         }
@@ -58,6 +58,32 @@ class AttributeCollection implements Iterator
         $this->collection[] = $attr;
         
         return $this;
+    }
+    
+    /**
+     * @param string $name
+     * @return AttributeCollection
+     */
+    public function remove($name) 
+    {
+        $collection = [];
+        foreach ($this->collection as $attr) {
+            if (strcasecmp($attr->getName(), $name) !== 0) {
+                $collection[] = $attr;
+            }
+        }
+        $this->collection = $collection;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Attribute $attribute
+     * @return AttributeCollection
+     */
+    public function removeElement(Attribute $attribute) 
+    {
+        return $this->remove($attribute->getName());
     }
     
     /**
