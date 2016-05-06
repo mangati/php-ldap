@@ -40,8 +40,8 @@ class Entry
      * new Entry('cn=teste', 'dc=site')
      * new Entry('cn=teste,dc=site')
      * 
-     * @param type $dnOrRdn
-     * @param type $parent
+     * @param string $dnOrRdn
+     * @param string $parent
      */
     public function __construct($dnOrRdn, $parent = null)
     {
