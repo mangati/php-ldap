@@ -3,8 +3,9 @@
 namespace Mangati\Ldap\Output;
 
 use Exception;
+use Mangati\Ldap\Connection;
 use Mangati\Ldap\Entry\Entry;
-use Mangati\Ldap\Entry\Manager;
+use Mangati\Ldap\Manager;
 use Mangati\Ldap\Exception\AlreadyExistsException;
 use Mangati\IO\OutputInterface;
 
@@ -18,9 +19,9 @@ class LdapOutput implements OutputInterface
     
     private $manager;
     
-    public function __construct($host, $port, $user = null, $pass = null, $startTls = false)
+    public function __construct(Connection $conn)
     {
-        $this->manager = new Manager($host, $port, $user, $pass, $startTls);
+        $this->manager = new Manager($conn);
     }
     
     public function open()
