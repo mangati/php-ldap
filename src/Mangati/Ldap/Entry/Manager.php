@@ -172,8 +172,8 @@ class Manager
     
     /**
      * 
-     * @param type $dn
-     * @param type $newDn
+     * @param string $dn
+     * @param string $newDn
      * @throws LdapException
      */
     public function rename($dn, $newDn)
@@ -191,7 +191,7 @@ class Manager
     
     /**
      * 
-     * @param type $dn
+     * @param string $dn
      * @throws LdapException
      */
     public function delete($dn)
@@ -204,6 +204,9 @@ class Manager
         }
     }
     
+    /**
+     * 
+     */
     public function close()
     {
         $this->checkConnection();
@@ -260,6 +263,14 @@ class Manager
         return $entry;
     }
     
+    /**
+     * 
+     * @throws BadSearchFilterException
+     * @throws NoSuchObjectException
+     * @throws InvalidCredentialException
+     * @throws AlreadyExistsException
+     * @throws LdapException
+     */
     private function throwException() 
     {
         $error = ldap_error($this->conn);
