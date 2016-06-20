@@ -3,7 +3,7 @@
 namespace Mangati\Ldap\Attribute;
 
 /**
- * TextAttribute
+ * PasswordAttribute
  *
  * @author Rogério Lino <rogeriolino@gmail.com>
  */

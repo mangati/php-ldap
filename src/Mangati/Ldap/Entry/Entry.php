@@ -83,6 +83,17 @@ class Entry
     {
         return $this->parent;
     }
+    
+    public function is($objectClass)
+    {
+        foreach ($this->attributes->getAll('objectClass') as $attr) {
+            if (strcasecmp($attr->getValue(), $objectClass)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
         
     /**
      * @return AttributeCollection

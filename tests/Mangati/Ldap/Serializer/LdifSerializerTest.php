@@ -11,7 +11,7 @@ use Mangati\Ldap\Schema\Person;
 /**
  * LdifSerializerTest
  *
- * @author ralfilho
+ * @author Rogério Lino <rogeriolino@gmail.com>
  */
 class LdifSerializerTest extends PHPUnit_Framework_TestCase
 {

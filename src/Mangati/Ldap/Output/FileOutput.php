@@ -8,7 +8,7 @@ use Mangati\IO\OutputInterface;
 /**
  * FileOutput
  *
- * @author ralfilho
+ * @author Rogério Lino <rogeriolino@gmail.com>
  */
 class FileOutput implements OutputInterface
 {

@@ -12,7 +12,7 @@ use Mangati\IO\OutputInterface;
 /**
  * LdapOutput
  *
- * @author ralfilho
+ * @author Rogério Lino <rogeriolino@gmail.com>
  */
 class LdapOutput implements OutputInterface
 {

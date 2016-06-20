@@ -2,6 +2,7 @@
 
 namespace Mangati\Ldap;
 
+use Mangati\Ldap\Exception\LdapException;
 use Mangati\Ldap\Exception\ErrorHandler;
 
 /**
@@ -159,8 +160,13 @@ class Connection
         
         $bind = @ldap_bind($this->resource, $this->user, $this->pass);
         if ($bind === false) {
-            $this->close();
-            ErrorHandler::throwException($this);
+            try {
+                // using resource before close connection (prevent null)
+                ErrorHandler::throwException($this);
+            } catch (Exception $ex) {
+                $this->close();
+                throw $ex;
+            }
         }
         
         $this->connected = true;
