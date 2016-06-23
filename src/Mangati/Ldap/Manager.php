@@ -90,8 +90,8 @@ class Manager
         $this->checkConnection();
         $resource = $this->conn->getResource();
         
-        // ignore RDN: Cannot modify, need do rename
-        $attrs = $this->convertToArray($entry, [$entry->rdn()->getName()]);
+        // ignore RDN and DN: Cannot modify, need do rename
+        $attrs = $this->convertToArray($entry, [$entry->rdn()->getName(), 'DN', 'dn', 'distinguishedName']);
         
         $rs = @ldap_modify($resource, $entry->dn(), $attrs);
         if ($rs === false) {

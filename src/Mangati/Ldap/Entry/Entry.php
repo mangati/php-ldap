@@ -87,7 +87,7 @@ class Entry
     public function is($objectClass)
     {
         foreach ($this->attributes->getAll('objectClass') as $attr) {
-            if (strcasecmp($attr->getValue(), $objectClass)) {
+            if (strcasecmp($attr->getValue(), $objectClass) === 0) {
                 return true;
             }
         }
@@ -101,5 +101,24 @@ class Entry
     public function attrs() 
     {
         return $this->attributes;
+    }
+        
+    /**
+     * @return Entry
+     */
+    public function copy($newDn) 
+    {
+        $entry = new Entry($newDn);
+        
+        foreach ($this->attrs() as $attr) {
+            if (strcasecmp($attr->getName(), $entry->rdn()->getName()) === 0) {
+                continue;
+            }
+            
+            $entry->attrs()
+                    ->add(clone $attr);
+        }
+        
+        return $entry;
     }
 }
