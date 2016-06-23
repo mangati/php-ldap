@@ -52,5 +52,4 @@ class LdapOutput implements OutputInterface
     {
         $this->manager->close();
     }
-
 }

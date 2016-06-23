@@ -55,7 +55,7 @@ class Connection
     private $protocolVersion = 3;
     
     /**
-     * 
+     *
      * @param string $host
      * @param int    $port
      * @param string $user
@@ -73,7 +73,7 @@ class Connection
     }
     
     /**
-     * 
+     *
      * @return string
      */
     public function getHost()
@@ -82,7 +82,7 @@ class Connection
     }
 
     /**
-     * 
+     *
      * @return int
      */
     public function getPort()
@@ -91,7 +91,7 @@ class Connection
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getUser()
@@ -100,7 +100,7 @@ class Connection
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getPass()
@@ -109,7 +109,7 @@ class Connection
     }
     
     /**
-     * 
+     *
      * @return resource
      */
     public function getResource()
@@ -118,7 +118,7 @@ class Connection
     }
     
     /**
-     * 
+     *
      * @return bool
      */
     public function isConnected()
@@ -127,7 +127,7 @@ class Connection
     }
 
     /**
-     * 
+     *
      * @return bool
      */
     public function isTls()
@@ -136,7 +136,7 @@ class Connection
     }
         
     /**
-     * 
+     *
      * @throws LdapException
      */
     public function connect()
@@ -173,7 +173,7 @@ class Connection
     }
     
     /**
-     * 
+     *
      */
     public function close()
     {

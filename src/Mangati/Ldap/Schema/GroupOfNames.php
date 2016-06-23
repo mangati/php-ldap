@@ -49,5 +49,4 @@ class GroupOfNames extends Top
             ]
         ]);
     }
-    
 }

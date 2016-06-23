@@ -26,7 +26,7 @@ class Person extends Top
     {
         $base = parent::requiredAttributes();
         return array_merge($base, [
-            'cn', 
+            'cn',
             'sn',
         ]);
     }
@@ -57,5 +57,4 @@ class Person extends Top
             ],
         ]);
     }
-
 }

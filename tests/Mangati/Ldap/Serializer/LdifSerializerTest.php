@@ -32,8 +32,8 @@ class LdifSerializerTest extends PHPUnit_Framework_TestCase
                 ->withClass(GroupOfNames::class)
                 ->set('description', 'testing')
                 ->set('member', [
-                    'cn=member1,dc=company,dc=local', 
-                    'cn=member2,dc=company,dc=local', 
+                    'cn=member1,dc=company,dc=local',
+                    'cn=member2,dc=company,dc=local',
                     'cn=member3,dc=company,dc=local'
                 ])
                 ->build();

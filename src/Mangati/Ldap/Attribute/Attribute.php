@@ -55,5 +55,4 @@ abstract class Attribute
     {
         return "{$this->getName()}={$this->getValue()}";
     }
-
 }

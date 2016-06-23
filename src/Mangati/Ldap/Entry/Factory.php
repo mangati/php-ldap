@@ -77,7 +77,7 @@ class Factory
     }
     
     /**
-     * 
+     *
      * @param string ObjectClassInterface
      * @return Factory
      */
@@ -91,7 +91,7 @@ class Factory
     }
     
     /**
-     * 
+     *
      * @param string ObjectClassInterface
      * @param Entry
      * @return Entry
@@ -109,7 +109,7 @@ class Factory
     }
     
     /**
-     * 
+     *
      * @param string $objectClass
      * @return \Mangati\Ldap\Schema\ObjectClassInterface
      * @throws Exception
@@ -125,5 +125,4 @@ class Factory
         
         throw new Exception(sprintf('Parâmetro inválido. Precisa ser um ObjectClass. Recebido %s', $objectClass));
     }
-    
 }

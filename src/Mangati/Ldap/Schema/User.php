@@ -51,5 +51,4 @@ class User extends OrganizationalPerson
             ],
         ]);
     }
-
 }

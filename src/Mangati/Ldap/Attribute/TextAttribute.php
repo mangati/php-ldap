@@ -9,7 +9,7 @@ namespace Mangati\Ldap\Attribute;
  */
 class TextAttribute extends Attribute
 {
-    protected function parseValue($value) 
+    protected function parseValue($value)
     {
         return $value;
     }

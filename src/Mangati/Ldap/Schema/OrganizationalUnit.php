@@ -26,7 +26,7 @@ class OrganizationalUnit extends Top
     {
         $base = parent::requiredAttributes();
         return array_merge($base, [
-            'ou', 
+            'ou',
         ]);
     }
 

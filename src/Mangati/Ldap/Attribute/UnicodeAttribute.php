@@ -15,14 +15,13 @@ class UnicodeAttribute extends Attribute
         return $this->encodePassword($value);
     }
     
-    private function encodePassword($password) 
+    private function encodePassword($password)
     {
         $password = "\"".$password."\"";
         $encoded = "";
-        for ($i = 0; $i < strlen($password); $i++) { 
-            $encoded .= "{$password{$i}}\000"; 
+        for ($i = 0; $i < strlen($password); $i++) {
+            $encoded .= "{$password{$i}}\000";
         }
         return $encoded;
     }
-    
 }

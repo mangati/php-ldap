@@ -36,10 +36,10 @@ class Entry
     
     /**
      * Se o $parent for informado, o valor de $dnOrRdn deve ser apenas o nome do atributo
-     * 
+     *
      * new Entry('cn=teste', 'dc=site')
      * new Entry('cn=teste,dc=site')
-     * 
+     *
      * @param string $dnOrRdn
      * @param string $parent
      */
@@ -62,7 +62,7 @@ class Entry
     }
     
     /**
-     * 
+     *
      * @return string
      */
     public function dn()
@@ -71,7 +71,7 @@ class Entry
     }
     
     /**
-     * 
+     *
      * @return Attribute
      */
     public function rdn()
@@ -98,7 +98,7 @@ class Entry
     /**
      * @return AttributeCollection
      */
-    public function attrs() 
+    public function attrs()
     {
         return $this->attributes;
     }
@@ -106,7 +106,7 @@ class Entry
     /**
      * @return Entry
      */
-    public function copy($newDn) 
+    public function copy($newDn)
     {
         $entry = new Entry($newDn);
         

@@ -61,5 +61,4 @@ class FileOutput implements OutputInterface
     {
         fclose($this->handler);
     }
-
 }

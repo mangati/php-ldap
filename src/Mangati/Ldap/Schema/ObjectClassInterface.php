@@ -8,7 +8,8 @@ namespace Mangati\Ldap\Schema;
  * @author Rogério Lino <rogeriolino@gmail.com>
  */
 interface ObjectClassInterface
-{    
+{
+
     
     /**
      * @return array
@@ -29,5 +30,4 @@ interface ObjectClassInterface
      * @return string
      */
     public function rdnAttributeName();
-    
 }

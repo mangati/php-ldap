@@ -29,5 +29,4 @@ class PasswordAttribute extends Attribute
         }
         return self::SHA256;
     }
-    
 }

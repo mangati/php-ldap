@@ -20,7 +20,7 @@ class Manager
     private $conn;
     
     /**
-     * 
+     *
      * @param Connection $conn
      */
     public function __construct(Connection $conn)
@@ -36,7 +36,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param type $baseDn
      * @param type $filter
      * @param array $attributes
@@ -64,7 +64,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param \Mangati\Ldap\Entry\Entry $entry
      * @throws LdapException
      */
@@ -81,7 +81,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param \Mangati\Ldap\Entry\Entry $entry
      * @throws LdapException
      */
@@ -100,7 +100,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param string $dn
      * @param string $newDn
      * @throws LdapException
@@ -120,7 +120,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param string $dn
      * @throws LdapException
      */
@@ -136,7 +136,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      */
     public function connect()
     {
@@ -144,7 +144,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      */
     public function close()
     {
@@ -154,7 +154,7 @@ class Manager
     }
     
     /**
-     * 
+     *
      * @param \Mangati\Ldap\Entry\Entry $entry
      * @return array
      */

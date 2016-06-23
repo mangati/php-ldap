@@ -13,14 +13,14 @@ class ErrorHandler
 {
     
     /**
-     * 
+     *
      * @throws BadSearchFilterException
      * @throws NoSuchObjectException
      * @throws InvalidCredentialException
      * @throws AlreadyExistsException
      * @throws LdapException
      */
-    public static function throwException(Connection $conn) 
+    public static function throwException(Connection $conn)
     {
         $error = ldap_error($conn->getResource());
         $code = ldap_errno($conn->getResource());
@@ -37,5 +37,4 @@ class ErrorHandler
         }
         throw new LdapException($error, $code);
     }
-    
 }
