@@ -65,6 +65,45 @@ class Manager
     
     /**
      *
+     * @param type $baseDn
+     * @param type $filter
+     * @param array $attributes
+     * @param int $pageSize
+     * @return \Generator
+     * @throws LdapException
+     */
+    public function pagedSearch($baseDn, $filter, array $attributes = [], $pageSize = 100)
+    {
+        $this->checkConnection();
+        $resource = $this->conn->getResource();
+        
+        $cookie = '';
+        do {
+            ldap_control_paged_result($resource, $pageSize, true, $cookie);
+
+            $search = @ldap_search($resource, $baseDn, $filter, $attributes);
+            if ($search === false) {
+                ErrorHandler::throwException($this->conn);
+            }
+            
+            $result = @ldap_get_entries($resource, $search);
+            if ($result === false) {
+                ErrorHandler::throwException($this->conn);
+            }
+
+            for ($i = 0; $i < $result['count']; $i++) {
+                $row = $result[$i];
+                $entry = $this->parseArray($row);
+                yield $entry;
+            }
+
+            ldap_control_paged_result_response($resource, $search, $cookie);
+
+        } while ($cookie !== null && $cookie != '');
+    }
+    
+    /**
+     *
      * @param \Mangati\Ldap\Entry\Entry $entry
      * @throws LdapException
      */
