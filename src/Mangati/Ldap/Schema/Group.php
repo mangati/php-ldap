@@ -3,17 +3,17 @@
 namespace Mangati\Ldap\Schema;
 
 /**
- * GroupOfNames
+ * Group
  *
  * @author Rogério Lino <rogeriolino@gmail.com>
  */
-class GroupOfNames extends Top
+class Group extends Top
 {
     
     public function objectClasses()
     {
         $base = parent::objectClasses();
-        $base[] = 'groupOfNames';
+        $base[] = 'group';
         return $base;
     }
     
@@ -39,11 +39,15 @@ class GroupOfNames extends Top
                 'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
                 'single_valued' => true
             ],
-            'member' => [
+            'name' => [
                 'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
-                'single_valued' => false
+                'single_valued' => true
             ],
-            'description' => [
+            'groupType' => [
+                'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
+                'single_valued' => true
+            ],
+            'member' => [
                 'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
                 'single_valued' => false
             ]
