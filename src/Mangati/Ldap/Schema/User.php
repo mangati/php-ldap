@@ -30,7 +30,11 @@ class User extends OrganizationalPerson
                 'single_valued' => true
             ],
             'sAMAccountName' => [
-                'class' => \Mangati\Ldap\Attribute\PasswordAttribute::class,
+                'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
+                'single_valued' => true
+            ],
+            'sAMAccountType' => [
+                'class' => \Mangati\Ldap\Attribute\TextAttribute::class,
                 'single_valued' => true
             ],
             'userPrincipalName' => [
