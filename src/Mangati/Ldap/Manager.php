@@ -175,6 +175,14 @@ class Manager
     }
     
     /**
+     * @return bool
+     */
+    public function isConnected()
+    {
+        $this->conn->isConnected();
+    }
+    
+    /**
      *
      */
     public function connect()
