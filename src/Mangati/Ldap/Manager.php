@@ -34,6 +34,37 @@ class Manager
             throw new LdapException('Not connected to server.');
         }
     }
+
+    /**
+     * Get the LDAP entry by DN
+     * @param  string $dn
+     * @param  array  $attributes
+     * @return Entry
+     */
+    public function get($dn, array $attributes = [])
+    {
+        $this->checkConnection();
+        $resource = $this->conn->getResource();
+
+        $filter="(objectclass=*)";
+        $search = @ldap_read($resource, $dn, $filter, $attributes);
+        if ($search === false) {
+            ErrorHandler::throwException($this->conn);
+        }
+        $result = @ldap_get_entries($resource, $search);
+        if ($result === false) {
+            ErrorHandler::throwException($this->conn);
+        }
+
+        $entry = null;
+
+        if ($result['count'] > 0) {
+            $row = $result[0];
+            $entry = $this->parseArray($row);
+        }
+
+        return $entry;
+    }
     
     /**
      *
