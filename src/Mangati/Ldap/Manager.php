@@ -163,9 +163,11 @@ class Manager
         // ignore RDN and DN: Cannot modify, need do rename
         $attrs = $this->convertToArray($entry, [$entry->rdn()->getName(), 'DN', 'dn', 'distinguishedName']);
         
-        $rs = @ldap_modify($resource, $entry->dn(), $attrs);
-        if ($rs === false) {
-            ErrorHandler::throwException($this->conn);
+        if (!empty($attrs)) {
+            $rs = @ldap_modify($resource, $entry->dn(), $attrs);
+            if ($rs === false) {
+                ErrorHandler::throwException($this->conn);
+            }
         }
     }
     
